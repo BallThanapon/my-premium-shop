@@ -1,15 +1,11 @@
 "use client";
+
 import { Container, Grid, Typography, Box } from "@mui/material";
-import PeopleIcon from "@mui/icons-material/People";
-import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
-import InventoryIcon from "@mui/icons-material/Inventory";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 import Navbar from "@/components/Navbar";
-import StatCard from "@/components/StatCard";
 import ProductCard from "@/components/ProductCard";
 import Topbanner from "@/components/Topbanner";
-
+import Image from "next/image";
 // ข้อมูลจำลอง สินค้า
 const products = [
   {
@@ -158,55 +154,19 @@ const products = [
   },
 ];
 
-export default function HomePage() {
+function Allproducts() {
   return (
     <>
       <Navbar />
-      <Topbanner/>
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        {/* หัวข้อสถิติ */}
-        <Typography
-          variant="h5"
-          sx={{ fontWeight: "bold", mb: 2, color: "primary.dark" }}
-        >
-          📊 แผงควบคุมสถิติระบบ
-        </Typography>
 
-        {/* ส่วนการ์ดสถิติ (Grid 4 คอลัมน์) */}
-        <Grid container spacing={2} sx={{ mb: 4 }}>
-          <Grid size={{ xs: 12, md: 3 }}>
-            <StatCard
-              title="ผู้ใช้ทั้งหมด"
-              value="1,240"
-              icon={PeopleIcon}
-              color="#ff80ab"
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 3 }}>
-            <StatCard
-              title="ยอดขายรวม"
-              value="฿45,900"
-              icon={PointOfSaleIcon}
-              color="#4caf50"
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 3 }}>
-            <StatCard
-              title="สต็อกพร้อมขาย"
-              value="95"
-              icon={InventoryIcon}
-              color="#2196f3"
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 3 }}>
-            <StatCard
-              title="ขายแล้วทั้งหมด"
-              value="3,820"
-              icon={ShoppingBasketIcon}
-              color="#ff9800"
-            />
-          </Grid>
-        </Grid>
+        <Image
+                alt="banner comunication logo"
+                src={"/images/productbanner.jpg"}
+                width={1200}
+                height={800}
+                layout="responsive"
+              ></Image>
 
         {/* ส่วนรายการสินค้า */}
         <Box sx={{ borderTop: "2px dashed #ffb3d9", pt: 3, mt: 2 }}>
@@ -220,7 +180,7 @@ export default function HomePage() {
 
           {/* Grid รายการสินค้า (Responsive Desktop 4, Tablet 3, Mobile 1-2) */}
           <Grid container spacing={3}>
-            {products.map((item,keys) => (
+            {products.map((item, keys) => (
               <Grid key={keys} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
                 <ProductCard {...item} />
               </Grid>
@@ -231,3 +191,5 @@ export default function HomePage() {
     </>
   );
 }
+
+export default Allproducts;
